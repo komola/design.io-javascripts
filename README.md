@@ -20,3 +20,8 @@ require('design.io-javascripts')
   #   console.log("do something manually with it")
 ```
 
+Then just make sure you have `design.io` running from your project's root:
+
+```
+design.io
+```
