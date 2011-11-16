@@ -1,0 +1,5 @@
+require("#{process.cwd()}/lib/design.io-jasmine")()
+
+watch /[sS]pec\.(coffee|js)$/,
+  update: (path) ->
+    console.log "UPDATED!"
