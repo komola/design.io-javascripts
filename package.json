@@ -1,9 +1,9 @@
 {
-  "name": "design.io-jasmine",
+  "name": "design.io-javascripts",
   "version": "0.1.0",
-  "description": "Test Your App with Jasmine in Real-Time from TextMate",
-  "homepage": "http://github.com/viatropos/design.io-jasmine",
-  "main": "lib/design.io-jasmine.js",
+  "description": "JavaScript Watcher for Design.IO",
+  "homepage": "http://github.com/viatropos/design.io-javascripts",
+  "main": "lib/design.io-javascripts.js",
   "author": "Lance Pollard <lancejpollard@gmail.com>",
   "keywords": [
     "design",
@@ -17,11 +17,11 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/viatropos/design.io-jasmine/issues"
+    "url": "https://github.com/viatropos/design.io-javascripts/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/viatropos/design.io-jasmine.git"
+    "url": "https://github.com/viatropos/design.io-javascripts.git"
   },
   "engines": { "node": ">= 0.4.0" },
   "dependencies": {
