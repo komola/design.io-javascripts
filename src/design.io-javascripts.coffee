@@ -64,7 +64,7 @@ module.exports = ->
       
       # require: false makes it a lot faster
       pathfinder.compile path, (error, string, file) ->
-        return self.error(error) if error
+        return callback(error) if error
         
         if compressor
           compressor.render string, (error, result) ->
@@ -72,12 +72,12 @@ module.exports = ->
             self.broadcast body: result, slug: self.toSlug(path)
             write.call(self, path, result)
             touchDependencies(file)
-            process.nextTick(callback)
+            callback()
         else
           self.broadcast body: string, slug: self.toSlug(path)
           write.call(self, path, string)
           touchDependencies(file)
-          process.nextTick(callback)
+          callback()
         
     client:
       debug: debug
