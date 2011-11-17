@@ -56,9 +56,13 @@ module.exports = ->
     toSlug: (path) ->
       path.replace(process.cwd() + '/', '').replace(/[\/\.]/g, '-')
       
-    update: (path) ->
+    initialize: (path, callback) ->
+      @update(path, callback)
+      
+    update: (path, callback) ->
       self = @
       
+      # require: false makes it a lot faster
       pathfinder.compile path, (error, string, file) ->
         return self.error(error) if error
         
@@ -68,10 +72,12 @@ module.exports = ->
             self.broadcast body: result, slug: self.toSlug(path)
             write.call(self, path, result)
             touchDependencies(file)
+            process.nextTick(callback)
         else
           self.broadcast body: string, slug: self.toSlug(path)
           write.call(self, path, string)
           touchDependencies(file)
+          process.nextTick(callback)
         
     client:
       debug: debug
