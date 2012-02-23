@@ -65,7 +65,7 @@ module.exports = ->
       
       # require: false makes it a lot faster
       pathfinder.compile path, (error, string, file) ->
-        return callback(error) if error
+        return self.error(error, callback) if error
         
         if compressor
           compressor.render string, (error, result) ->

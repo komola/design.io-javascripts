@@ -1,6 +1,6 @@
 {
   "name": "design.io-javascripts",
-  "version": "0.3.0",
+  "version": "0.3.0-1",
   "description": "JavaScript Watcher for Design.IO",
   "homepage": "http://github.com/viatropos/design.io-javascripts",
   "main": "lib/design.io-javascripts.js",
