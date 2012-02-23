@@ -1,8 +1,8 @@
-Shift = require 'shift'
+mint  = require 'mint'
 _path = require 'path'
 fs    = require 'fs'
-Pathfinder  = require 'pathfinder'
-File  = Pathfinder.File
+File  = require('pathfinder').File
+Project = require("design.io").project
 
 # http://darcyclarke.me/development/detect-attribute-changes-with-jquery/
 # https://github.com/jollytoad/jquery.mutation-events
@@ -20,7 +20,8 @@ File  = Pathfinder.File
 #         File.write(File.pathWithDigest(path), string)
 #       
 module.exports = ->
-  pathfinder  = Watcher.pathfinder
+  project     = Project.find()
+  pathfinder  = project.pathfinder
   args        = Array.prototype.slice.call(arguments, 0, arguments.length)
   options     = if typeof args[args.length - 1] == "object" then args.pop() else {}
   args[0]     = /\.(coffee|js)$/ unless args.length > 0
@@ -33,7 +34,7 @@ module.exports = ->
   ignore      = options.ignore # for now it must be a regexp
   
   if options.hasOwnProperty("compress") && options.compress == true
-    compressor = new Shift.UglifyJS
+    compressor = mint.uglifyjs
     
   write = (path, string) ->
     if writeMethod
@@ -50,7 +51,7 @@ module.exports = ->
         # touch the file so it loops back through
         File.touch dependentPath
   
-  Watcher.create args,
+  project.createWatcher args,
     ignore: ignore
     
     toSlug: (path) ->
